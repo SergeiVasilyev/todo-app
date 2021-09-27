@@ -11,15 +11,21 @@
 </head>
 <body>
     <h1>TODO list</h1>
-    <form id="usrform">
-        {% for todo in todos %}
-            <p>{{todo.id}}. {{todo.todoitem}}</p>
-        {% endfor %}
-        
+    <!-- <form id="usrform" action="/new-record/" method="post">
         <textarea name="todotext" form="usrform" rows="4" cols="50">Enter text here...</textarea>
         <br>
         <input type="submit">
+    </form> -->
+
+    <form action="/new-record/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit" />
     </form>
+
+    {% for todo in todos %}
+        <p>{{todo.id}}. {{todo.todoitem}}</p>
+    {% endfor %}
     <br>
     
 </body>
