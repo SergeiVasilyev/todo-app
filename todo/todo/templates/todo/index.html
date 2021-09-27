@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'todo/main.css' %}">
+    <title>Todo project</title>
+    <style type="text/css"></style>
+</head>
+<body>
+    <h1>TODO list</h1>
+    <form id="usrform">
+        {% for todo in todos %}
+            <p>{{todo.id}}. {{todo.todoitem}}</p>
+        {% endfor %}
+        
+        <textarea name="todotext" form="usrform" rows="4" cols="50">Enter text here...</textarea>
+        <br>
+        <input type="submit">
+    </form>
+    <br>
+    
+</body>
+</html>
