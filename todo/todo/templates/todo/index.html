@@ -10,23 +10,27 @@
     <style type="text/css"></style>
 </head>
 <body>
-    <h1>TODO list</h1>
-    <!-- <form id="usrform" action="/new-record/" method="post">
-        <textarea name="todotext" form="usrform" rows="4" cols="50">Enter text here...</textarea>
-        <br>
-        <input type="submit">
-    </form> -->
+    <article>
+        <div class="h_conteiner">
+            <h1>Todo list</h1>
+        </div>
+        <div class="conteiner">
+            <div class="form_conteiner">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Submit</button>
-    </form>
-
-    {% for todo in todos %}
-        <p>{{todo.id}}. {{todo.todoitem}}</p>
-    {% endfor %}
-    <br>
-    
+            <div class="list_conteiner">
+                <ul id="myUL">
+                    {% for todo in todos %}
+                        <li>{{todo.id}}. {{todo.todoitem}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </article>
 </body>
 </html>

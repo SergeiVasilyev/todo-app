@@ -6,7 +6,7 @@ class NameForm(forms.Form):
 from django import forms
 from .models import Todolist
 
-class ArticlesForm(forms.Form):
+class TodosForm(forms.ModelForm):
     class Meta:
         model = Todolist
-        fields = ['todoitem', 'todoitem_fav']
+        fields = ['todoitem']

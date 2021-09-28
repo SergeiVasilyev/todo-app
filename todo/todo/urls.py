@@ -23,4 +23,5 @@ from todo import views
 urlpatterns = [
     path('', views.index, name='home'),
     path('admin/', admin.site.urls),
+    path('post/new/', views.addpage, name='addpage'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
