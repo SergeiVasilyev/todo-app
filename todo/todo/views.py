@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import TodosForm
-from django.shortcuts import render, redirect, get_object_or_404
-
+from django.shortcuts import render, redirect
+from django import forms
 from .models import Todolist
 
 # def index(request):
@@ -17,22 +17,31 @@ def index(request):
     }
     return render(request, 'todo/index.html', context)
 
-# def forms(request):
-#     form = TodosForm()
-#     context = {
-#         'form': form
-#     }
-#     return render(request, 'todo/index.html', context)
-
-
 def addpage(request):
-    print('ADDING NEW DATA')
-    if request.method == 'POST':
-        form = Todolist(request.POST)
+    print('ADDING NEW DATA', request)
+    if request.method == "POST":
+        form = TodosForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
-            form.save()
+            form = Todolist(request.POST)
+            print('REQUEST:: ', form.id.lists()) #????????
+            #form.save()
             return redirect('home')
     else:
-        form = Todolist()
+        form = TodosForm()
     return render(request, 'post/new/', {'form': form})
+
+
+
+# def addpage(request):
+#     print('ADDING NEW DATA', request)
+#     if request.method == "POST":
+#         form = TodosForm(request.POST)
+#         if form.is_valid():
+#             form = Todolist(request.POST)
+#             print('REQUEST:: ', form.id) #????????
+#             form.save()
+#             return redirect('home')
+#     else:
+#         form = TodosForm()
+#     return render(request, 'post/new/', {'form': form})
+

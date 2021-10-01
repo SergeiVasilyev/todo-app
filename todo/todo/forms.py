@@ -9,4 +9,4 @@ from .models import Todolist
 class TodosForm(forms.ModelForm):
     class Meta:
         model = Todolist
-        fields = ['todoitem']
+        fields = ['todoitem', 'todoitem_fav']
