@@ -22,7 +22,6 @@ def addpage(request):
     if request.method == "POST":
         form = TodosForm(request.POST)
         if form.is_valid():
-            form = Todolist(request.POST)
             print('REQUEST:: ', form.id.lists()) #????????
             #form.save()
             return redirect('home')
